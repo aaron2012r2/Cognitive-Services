@@ -18,13 +18,13 @@ envCogServices <- new.env(parent = emptyenv())
 
 # Function for using Cognitive Services API
 # Note: Can ONLY be used with keyPhrases OR sentiment
-fnCogServicesBatch <- function(text.inputs, phrase.language = "en", endpoint = "keyPhrases") {
+fnCogServicesBatch <- function(text.inputs, phrase.language = "en", endpoint = "keyPhrases", region = "eastus") {
 
     # Coerce to character
     text.inputs <- as.character(text.inputs)
 
     # The URL for Key Phrases cognitive service
-    url.cog.service <- paste("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/", endpoint, sep = "")
+    url.cog.service <- paste("https://", region, ".api.cognitive.microsoft.com/text/analytics/v2.0/", endpoint, sep = "")
 
     # Create empty list in proper structure for request
     list.docs <- list(documents = list(list()))
